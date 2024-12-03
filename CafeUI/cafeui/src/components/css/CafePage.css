@@ -1,0 +1,56 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-container input {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.ag-theme-alpine {
+    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ag-theme-alpine .ag-header-cell-label {
+    justify-content: center;
+}
+
+.ag-theme-alpine .ag-cell {
+    text-align: center;
+}

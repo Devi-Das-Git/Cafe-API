@@ -1,0 +1,15 @@
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\bin\Debug\net9.0\Cafe.Infrastructure.deps.json
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\bin\Debug\net9.0\Cafe.Infrastructure.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\bin\Debug\net9.0\Cafe.Infrastructure.pdb
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\bin\Debug\net9.0\Cafe.Domain.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\bin\Debug\net9.0\Cafe.Domain.pdb
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.csproj.AssemblyReference.cache
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.AssemblyInfoInputs.cache
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.AssemblyInfo.cs
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.csproj.CoreCompileInputs.cache
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Inf.56D20B83.Up2Date
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\refint\Cafe.Infrastructure.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\Cafe.Infrastructure.pdb
+C:\PAN\Cafe\CafeAPI\Cafe.Infrastructure\obj\Debug\net9.0\ref\Cafe.Infrastructure.dll

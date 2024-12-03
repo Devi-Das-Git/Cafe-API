@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeAPI", "CafeAPI\CafeAPI.csproj", "{4EF5A1D5-C126-4223-8E22-E712797E2241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Infrastructure", "Cafe.Infrastructure\Cafe.Infrastructure.csproj", "{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Domain", "Cafe.Domain\Cafe.Domain.csproj", "{393DC021-4FAE-4001-B506-4F4DBDC3CB16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EF5A1D5-C126-4223-8E22-E712797E2241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF5A1D5-C126-4223-8E22-E712797E2241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF5A1D5-C126-4223-8E22-E712797E2241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF5A1D5-C126-4223-8E22-E712797E2241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{393DC021-4FAE-4001-B506-4F4DBDC3CB16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393DC021-4FAE-4001-B506-4F4DBDC3CB16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393DC021-4FAE-4001-B506-4F4DBDC3CB16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393DC021-4FAE-4001-B506-4F4DBDC3CB16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

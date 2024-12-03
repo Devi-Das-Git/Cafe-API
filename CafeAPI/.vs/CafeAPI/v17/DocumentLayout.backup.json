@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\PAN\\Cafe\\CafeAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}|Cafe.Infrastructure\\Cafe.Infrastructure.csproj|c:\\pan\\cafe\\cafeapi\\cafe.infrastructure\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}|Cafe.Infrastructure\\Cafe.Infrastructure.csproj|solutionrelative:cafe.infrastructure\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}|Cafe.Infrastructure\\Cafe.Infrastructure.csproj|c:\\pan\\cafe\\cafeapi\\cafe.infrastructure\\cafecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31DAE0D4-D2B8-4C67-98BC-AEC330C0EE60}|Cafe.Infrastructure\\Cafe.Infrastructure.csproj|solutionrelative:cafe.infrastructure\\cafecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF5A1D5-C126-4223-8E22-E712797E2241}|CafeAPI\\CafeAPI.csproj|c:\\pan\\cafe\\cafeapi\\cafeapi\\application\\queries\\cafequeries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF5A1D5-C126-4223-8E22-E712797E2241}|CafeAPI\\CafeAPI.csproj|solutionrelative:cafeapi\\application\\queries\\cafequeries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF5A1D5-C126-4223-8E22-E712797E2241}|CafeAPI\\CafeAPI.csproj|c:\\pan\\cafe\\cafeapi\\cafeapi\\apis\\cafeapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF5A1D5-C126-4223-8E22-E712797E2241}|CafeAPI\\CafeAPI.csproj|solutionrelative:cafeapi\\apis\\cafeapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CafeQueries.cs",
+              "DocumentMoniker": "C:\\PAN\\Cafe\\CafeAPI\\CafeAPI\\Application\\Queries\\CafeQueries.cs",
+              "RelativeDocumentMoniker": "CafeAPI\\Application\\Queries\\CafeQueries.cs",
+              "ToolTip": "C:\\PAN\\Cafe\\CafeAPI\\CafeAPI\\Application\\Queries\\CafeQueries.cs",
+              "RelativeToolTip": "CafeAPI\\Application\\Queries\\CafeQueries.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:26:23.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CafeContext.cs",
+              "DocumentMoniker": "C:\\PAN\\Cafe\\CafeAPI\\Cafe.Infrastructure\\CafeContext.cs",
+              "RelativeDocumentMoniker": "Cafe.Infrastructure\\CafeContext.cs",
+              "ToolTip": "C:\\PAN\\Cafe\\CafeAPI\\Cafe.Infrastructure\\CafeContext.cs",
+              "RelativeToolTip": "Cafe.Infrastructure\\CafeContext.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAABwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:36:15.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\PAN\\Cafe\\CafeAPI\\Cafe.Infrastructure\\Repository\\Repository.cs",
+              "RelativeDocumentMoniker": "Cafe.Infrastructure\\Repository\\Repository.cs",
+              "ToolTip": "C:\\PAN\\Cafe\\CafeAPI\\Cafe.Infrastructure\\Repository\\Repository.cs",
+              "RelativeToolTip": "Cafe.Infrastructure\\Repository\\Repository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowCgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:55:19.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CafeApi.cs",
+              "DocumentMoniker": "C:\\PAN\\Cafe\\CafeAPI\\CafeAPI\\Apis\\CafeApi.cs",
+              "RelativeDocumentMoniker": "CafeAPI\\Apis\\CafeApi.cs",
+              "ToolTip": "C:\\PAN\\Cafe\\CafeAPI\\CafeAPI\\Apis\\CafeApi.cs",
+              "RelativeToolTip": "CafeAPI\\Apis\\CafeApi.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwEUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T04:32:58.818Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

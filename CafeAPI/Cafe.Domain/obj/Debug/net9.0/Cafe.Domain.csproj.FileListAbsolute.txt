@@ -1,0 +1,11 @@
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\bin\Debug\net9.0\Cafe.Domain.deps.json
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\bin\Debug\net9.0\Cafe.Domain.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\bin\Debug\net9.0\Cafe.Domain.pdb
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.AssemblyInfoInputs.cache
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.AssemblyInfo.cs
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.csproj.CoreCompileInputs.cache
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\refint\Cafe.Domain.dll
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\Cafe.Domain.pdb
+C:\PAN\Cafe\CafeAPI\Cafe.Domain\obj\Debug\net9.0\ref\Cafe.Domain.dll
