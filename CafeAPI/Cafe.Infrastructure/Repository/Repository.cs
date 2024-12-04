@@ -30,15 +30,14 @@ public class CafeRepository
     }
     public int RemoveCafe(Guid Id)
     {
-        //var cafe = _context.Cafes.Include(c => c.Employees).FirstOrDefaultAsync(c => c.Id == Id);
-        
-        //if (cafe != null) 
-        //{
-        //    _context.Employees.RemoveRange(cafe);
-        //    _context.Cafes.Remove(cafe); 
-        //}
-        var cafe = _context.Cafes.FirstOrDefault(c => c.Id == Id);
-        _context.Remove(cafe);
+        var cafe = _context.Cafes.FirstOrDefault(c=>c.Id==Id);
+        var employee = _context.Employees.Where(x=>x.CafeId == Id);
+
+        if (cafe != null)
+        {
+            _context.RemoveRange(employee);
+            _context.RemoveRange(cafe);
+        }
         return _context.SaveChanges();
     }
 
