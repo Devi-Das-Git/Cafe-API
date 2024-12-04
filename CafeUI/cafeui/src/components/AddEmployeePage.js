@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './css/AddEmployee.css';
@@ -8,11 +8,35 @@ const AddEmployeePage = () => {
     const [phone, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
     const [startDate, setStartDate] = useState('');
-    const { cafeId } = useParams();
+    //const { cafeId } = useParams();
+    const [cafeId, setCafeId] = useState('');
+    const [cafes, setCafes] = useState([]);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+
+    const validate = () => {
+        const errors = {};
+        if (name.length < 6 || name.length > 10) errors.name = 'Name should be between 6 and 10 characters.';
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) errors.email = 'Invalid email address.';
+        const phonePattern = /^[89]\d{7}$/;
+        if (!phonePattern.test(phone)) errors.phone = 'Invalid Singapore phone number.';
+        if (!gender) errors.gender = 'Gender is required.';
+        if (!cafeId) errors.cafeId = 'Assigned Café is required.';
+        return errors;
+    };
+
+    useEffect(() => {
+        // Fetch cafes for dropdown
+        axios.get('http://localhost:5294/api/cafes/cafe/'+ "default").then(response => setCafes(response.data));
+
+   
+    }, []);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+          
         const newEmployee = {
             name,
             email,
@@ -28,7 +52,8 @@ const AddEmployeePage = () => {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('phone', phone);
-        //formData.append('gender', gender);
+        formData.append('cafeId', cafeId);
+        formData.append('gender', gender);
         //if (logo) formData.append('logo', logo);
 
         try {
@@ -97,6 +122,17 @@ const AddEmployeePage = () => {
                         required
                     />
                 </div>
+                <div className="form-group">
+                <label>Assigned Café</label>
+                <select value={cafeId} onChange={(e) => setCafeId(e.target.value)} className="form-control">
+                    <option value="">Select a café</option>
+                    {cafes.map(cafe => (
+                        <option key={cafe.id} value={cafe.id}>{cafe.name}</option>
+                    ))}
+                </select>
+                {errors.cafeId && <div className="text-danger">{errors.cafeId}</div>}
+            </div>
+
                 <button type="submit">Add Employee</button>
             </form>
         </div>
