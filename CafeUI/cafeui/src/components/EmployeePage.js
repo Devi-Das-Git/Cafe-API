@@ -52,7 +52,7 @@ const EmployeePage = () => {
     const [employees, setEmployees] = useState([]);
     // const { cafeId } = useParams();
     const navigate = useNavigate();
-    const [cafeId, setLocationFilter] = useState('6B29FC40-CA47-1067-B31D-00DD010662DA');
+    const [cafeId, setLocationFilter] = useState('Cafe Delight');
     useEffect(() => {
         fetchEmployees();
     }, [cafeId]);
