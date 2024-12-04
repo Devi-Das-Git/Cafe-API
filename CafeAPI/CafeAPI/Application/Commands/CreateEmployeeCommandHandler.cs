@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Cafe.Domain.Repository;
 using Cafe.Domain.Models;
 using System.Net;
@@ -22,7 +22,7 @@ namespace CafeAPI.Application.Commands
         string id = new string(Enumerable.Range(1, 7).Select(_ => chars[random.Next(chars.Length)]).ToArray());
 
         string uuid = "UI" + id;
-        Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = uuid, Email = message.Email, Phone = message.Phone, Name = message.Name,Gender="" };
+        Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = uuid, Email = message.Email, Phone = message.Phone, Name = message.Name,Gender=message.Gender,CafeId=message.cafeId };
 
         _repository.AddEmployee(employee);
             return Task.FromResult(true);
