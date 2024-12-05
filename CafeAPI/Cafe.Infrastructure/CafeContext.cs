@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System;
@@ -49,7 +49,7 @@ namespace Cafe.Infrastructure
             modelBuilder.Entity<Employee>().HasData(
                 new Employee
                 {
-                    Id = "6b29fc40-ca47-1067-b31d-00dd010662da",
+                    Id = "UI1234569",
                     Name = "Alice",
                     Email = "alice@example.com",
                     Phone = "8981234567",
