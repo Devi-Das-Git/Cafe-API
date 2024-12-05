@@ -25,7 +25,9 @@ const AddEmployeePage = () => {
         if (!cafeId) errors.cafeId = 'Assigned Café is required.';
         return errors;
     };
-
+    const handleCancel = () => { navigate('/employees'); 
+        // Redirect to home or any other page 
+        };
     useEffect(() => {
         // Fetch cafes for dropdown
         axios.get('http://localhost:5294/api/cafes/cafe/'+ "default").then(response => setCafes(response.data));
@@ -134,6 +136,7 @@ const AddEmployeePage = () => {
             </div>
 
                 <button type="submit">Add Employee</button>
+                <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );
