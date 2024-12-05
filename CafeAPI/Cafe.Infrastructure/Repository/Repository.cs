@@ -1,4 +1,4 @@
-﻿using Cafe.Domain.Repository;
+using Cafe.Domain.Repository;
 using Cafe.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,14 +52,30 @@ public class CafeRepository
 
     public int UpdateCafe(Cafe.Domain.Models.Cafe Cafe)
     {
-        _context.Update(Cafe);
+        var existingCafe = _context.Cafes.Where(c=>c.Id==Cafe.Id).FirstOrDefault();
+
+        if (existingCafe != null) {
+            existingCafe.Location = Cafe.Location;
+            existingCafe.Description = Cafe.Description;
+            existingCafe.Name = Cafe.Name;
+            
+            _context.Update(existingCafe);
+        }
+        
         return _context.SaveChanges();
 
     }
     public int UpdateEmployee(Cafe.Domain.Models.Employee employee)
     {
-        employee.CafeId = new Guid("6B29FC40-CA47-1067-B31D-00DD010662DA");
-        _context.Update(employee);
+        var existingEmployee = _context.Employees.Find(employee.Id);
+        if (existingEmployee != null)
+        {
+            existingEmployee.Name = employee.Name;
+            existingEmployee.Phone = employee.Phone;
+            existingEmployee.Email = employee.Email;
+            existingEmployee.CafeId = employee.CafeId;
+            _context.Update(existingEmployee);
+        }
         return _context.SaveChanges();
 
     }
