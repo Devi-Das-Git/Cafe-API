@@ -18,7 +18,7 @@ namespace CafeAPI.Application.Commands
         public Task<bool> Handle(CreateEmployeeCommand message, CancellationToken cancellationToken)
         {
         Random random = new Random();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const string chars = "0123456789";
         string id = new string(Enumerable.Range(1, 7).Select(_ => chars[random.Next(chars.Length)]).ToArray());
 
         string uuid = "UI" + id;
