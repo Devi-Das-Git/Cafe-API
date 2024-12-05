@@ -1,4 +1,4 @@
-﻿
+
 
 using Cafe.Domain.Models;
 using CafeAPI.Application.Commands;
@@ -33,9 +33,20 @@ namespace CafeAPI.Apis
         private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> CreateEmployeeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
             CreateEmployeeCommand command, [AsParameters] CafeServices services)
         {
-            var commandCreate = new IdentifiedCommand<CreateEmployeeCommand, bool>(command, requestId);
-            var cafeResult = await services.Mediator.Send(commandCreate);
-            return TypedResults.Ok();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(command.Name) || string.IsNullOrWhiteSpace(command.Email) || string.IsNullOrWhiteSpace(command.Phone)
+                    || command.cafeId == Guid.Empty)
+                {
+                    return TypedResults.BadRequest("Please provide parameter values");
+                }
+                var commandCreate = new IdentifiedCommand<CreateEmployeeCommand, bool>(command, requestId);
+                var cafeResult = await services.Mediator.Send(commandCreate);
+                return TypedResults.Ok();
+            }
+            catch (Exception ex) {
+                return TypedResults.Problem("An error occurred while creating the cafe.");
+            }
         }
 
         private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> UpdateEmployeeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
@@ -56,31 +67,63 @@ namespace CafeAPI.Apis
         private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> RemoveEmployeeAsync([FromHeader(Name = "x-requestid")] string requestId,
              [AsParameters] CafeServices services)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(requestId))
+                {
+                    return TypedResults.BadRequest("Id is not available");
+                }
+                string customUuid = requestId;
+                Guid result = ConvertToGuid(customUuid);
+               
 
-            string customUuid = requestId;
-            Guid result = ConvertToGuid(customUuid);
-
-            var command = new RemoveEmployeeCommand(result);
-            var removeCommand = new IdentifiedCommand<RemoveEmployeeCommand, bool>(command, result);
-            var cafeResult = await services.Mediator.Send(removeCommand);
-            return TypedResults.Ok();
+                var command = new RemoveEmployeeCommand(result);
+                var removeCommand = new IdentifiedCommand<RemoveEmployeeCommand, bool>(command, result);
+                var cafeResult = await services.Mediator.Send(removeCommand);
+                return TypedResults.Ok();
+            }
+            catch (Exception ex)
+            {
+                return TypedResults.Problem("An error occurred while Deleting the Employee.");
+            }
         }
         private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> RemoveCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
              [AsParameters] CafeServices services)
         {
-            var command = new RemoveCafeCommand(requestId);
-            var removeCommand = new IdentifiedCommand<RemoveCafeCommand, bool>(command, requestId);
-            var cafeResult = await services.Mediator.Send(removeCommand);
-            return TypedResults.Ok();
+            try
+            {
+                if (requestId == Guid.Empty)
+                {
+                    return TypedResults.BadRequest("Id is not available");
+                }
+                var command = new RemoveCafeCommand(requestId);
+                var removeCommand = new IdentifiedCommand<RemoveCafeCommand, bool>(command, requestId);
+                var cafeResult = await services.Mediator.Send(removeCommand);
+                return TypedResults.Ok();
+            }
+            catch (Exception ex)
+            {
+                return TypedResults.Problem("An error occurred while Deleting the cafe.");
+            }
         }
 
         private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> CreateCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
             CreateCafeCommand command, [AsParameters] CafeServices services)
         {
-
-            var commandCreate = new IdentifiedCommand<CreateCafeCommand, bool>(command, requestId);
-            var cafeResult = await services.Mediator.Send(commandCreate);
-            return TypedResults.Ok();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(command.Name) || string.IsNullOrWhiteSpace(command.Location))
+                {
+                    return TypedResults.BadRequest("Name and Location are required fields.");
+                }
+                var commandCreate = new IdentifiedCommand<CreateCafeCommand, bool>(command, requestId);
+                var cafeResult = await services.Mediator.Send(commandCreate);
+                return TypedResults.Ok();
+            }
+            catch (Exception ex)
+            {
+                return TypedResults.Problem( "An error occurred while creating the cafe.");
+            }
         }
 
         private static async Task<Results<Ok<IEnumerable<CafeAPI.Application.Queries.Employee>>, NotFound>> GetEmloyeesByCafeAsync(string cafe, [AsParameters] CafeServices services, IMediator mediator)
