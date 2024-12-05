@@ -1,9 +1,9 @@
-﻿using MediatR;
+using MediatR;
 
 namespace CafeAPI.Application.Commands
 {
     public record UpdateCafeCommand(
-    string UserId,
+    Guid UserId,
     string Name,
     string Description,
      byte[] Logo,
