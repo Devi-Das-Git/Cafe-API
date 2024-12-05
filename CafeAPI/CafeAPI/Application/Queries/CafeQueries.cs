@@ -62,7 +62,8 @@ namespace CafeAPI.Application.Queries
                 Phone = e.Phone,
                 DaysWorked = (int)(DateTime.UtcNow - e.StartDate).TotalDays,
                 Cafe = e.Cafe.Name,
-                Gender = e.Gender
+                Gender = e.Gender,
+                StartDate = e.StartDate,
             }).OrderByDescending(e => e.DaysWorked).ToListAsync();
 
             if (employees is null)
