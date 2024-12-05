@@ -13,7 +13,9 @@ const AddCafePage = () => {
         setLogo(e.target.files[0]);
     };
 
-
+    const handleCancel = () => { navigate('/'); 
+        // Redirect to home or any other page 
+        };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -79,6 +81,7 @@ const random_uuid = uuidv4();
                     />
                 </div>
                 <button type="submit">Add Café</button>
+                <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );
