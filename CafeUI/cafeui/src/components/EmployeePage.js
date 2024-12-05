@@ -41,6 +41,7 @@ const actionCellRenderer = (props) => {
         window.location.reload()
     }  catch (error) {
         console.error('Error deleting cafe:', error);
+        window.location.reload()
     }};
     
     
@@ -80,7 +81,7 @@ const EmployeePage = () => {
         { headerName: 'Email', field: 'email' },
         { headerName: 'Phone', field: 'phone' },
         { headerName: 'Gender', field: 'gender' },
-        { headerName: 'Start Date', field: 'startDate' },
+        { headerName: 'Days Worked', field: 'daysWorked' },
         
     ];
     
@@ -95,7 +96,7 @@ const EmployeePage = () => {
             <h1>Employee Home</h1>
             <input
                     type="text"
-                    placeholder="Filter by Location"
+                    placeholder="Filter by Cafe Name"
                     value={cafeId}
                     onChange={(e) => setLocationFilter(e.target.value)}
                 />
