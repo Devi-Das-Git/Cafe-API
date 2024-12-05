@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CafeAPI.Apis
 {
@@ -35,6 +36,9 @@ namespace CafeAPI.Apis
         {
             try
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+                "CreateEmployeeCommand", nameof(requestId), command.Id);
+
                 if (string.IsNullOrWhiteSpace(command.Name) || string.IsNullOrWhiteSpace(command.Email) || string.IsNullOrWhiteSpace(command.Phone)
                     || command.cafeId == Guid.Empty)
                 {
@@ -45,6 +49,9 @@ namespace CafeAPI.Apis
                 return TypedResults.Ok();
             }
             catch (Exception ex) {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} - {Exception}",
+                "CreateEmployeeCommand", nameof(requestId), command.Id, ex.Message);
+
                 return TypedResults.Problem("An error occurred while creating the cafe.");
             }
         }
@@ -69,6 +76,9 @@ namespace CafeAPI.Apis
         {
             try
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+               "RemoveEmployeeCommand", nameof(requestId), requestId);
+
                 if (string.IsNullOrWhiteSpace(requestId))
                 {
                     return TypedResults.BadRequest("Id is not available");
@@ -84,6 +94,9 @@ namespace CafeAPI.Apis
             }
             catch (Exception ex)
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} -{Exception}",
+               "CreateEmployeeCommand", nameof(requestId), requestId,ex.Message);
+
                 return TypedResults.Problem("An error occurred while Deleting the Employee.");
             }
         }
@@ -92,6 +105,9 @@ namespace CafeAPI.Apis
         {
             try
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+               "RemoveEmployeeCommand", nameof(requestId), requestId);
+
                 if (requestId == Guid.Empty)
                 {
                     return TypedResults.BadRequest("Id is not available");
@@ -103,6 +119,8 @@ namespace CafeAPI.Apis
             }
             catch (Exception ex)
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} -{Exception}",
+              "RemoveEmployeeCommand", nameof(requestId), requestId,ex.Message);
                 return TypedResults.Problem("An error occurred while Deleting the cafe.");
             }
         }
@@ -116,12 +134,18 @@ namespace CafeAPI.Apis
                 {
                     return TypedResults.BadRequest("Name and Location are required fields.");
                 }
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+                "CreateCafeCommand",nameof(command.UserId),command.UserId); 
+
                 var commandCreate = new IdentifiedCommand<CreateCafeCommand, bool>(command, requestId);
                 var cafeResult = await services.Mediator.Send(commandCreate);
                 return TypedResults.Ok();
             }
             catch (Exception ex)
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} - {Exception}",
+                "CreateCafeCommand",nameof(command.UserId),command.UserId,ex.Message);
+
                 return TypedResults.Problem( "An error occurred while creating the cafe.");
             }
         }
@@ -130,11 +154,17 @@ namespace CafeAPI.Apis
         {
             try
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+              "GetEmployeeCommand", nameof(cafe), cafe);
+
                 var empByCafe = await services.Queries.GetEmployeesByCafe(cafe);
                 return TypedResults.Ok(empByCafe);
             }
-            catch
+            catch(Exception ex) 
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}-{Exception}",
+             "GetEmployeeByCafeName", nameof(cafe), cafe,ex.Message);
+
                 return TypedResults.NotFound();
             }
         }
@@ -143,11 +173,16 @@ namespace CafeAPI.Apis
         {
             try
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+             "GetEmployeeCommand", nameof(location), location);
+
                 var cafeByLoc = await services.Queries.GetCafeByLocationAsync(location);
                 return TypedResults.Ok(cafeByLoc);
             }
-            catch
+            catch( Exception ex) 
             {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}-{Exception}",
+             "GetCafeByLocation", nameof(location), location,ex.Message);
                 return TypedResults.NotFound();
             }
         }
