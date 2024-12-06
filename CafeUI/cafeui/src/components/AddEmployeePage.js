@@ -14,17 +14,6 @@ const AddEmployeePage = () => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    const validate = () => {
-        const errors = {};
-        if (name.length < 6 || name.length > 10) errors.name = 'Name should be between 6 and 10 characters.';
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) errors.email = 'Invalid email address.';
-        const phonePattern = /^[89]\d{7}$/;
-        if (!phonePattern.test(phone)) errors.phone = 'Invalid Singapore phone number.';
-        if (!gender) errors.gender = 'Gender is required.';
-        if (!cafeId) errors.cafeId = 'Assigned Café is required.';
-        return errors;
-    };
     const handleCancel = () => { navigate('/employees'); 
         // Redirect to home or any other page 
         };
@@ -82,6 +71,7 @@ const AddEmployeePage = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        minLength={6} maxLength={10}
                     />
                 </div>
                 <div>
@@ -91,6 +81,7 @@ const AddEmployeePage = () => {
                         value={email}
                         onChange={(e) => setEmailAddress(e.target.value)}
                         required
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     />
                 </div>
                 <div>
@@ -100,6 +91,7 @@ const AddEmployeePage = () => {
                         value={phone}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
+                        pattern="^[8-9][0-9]{7}$"
                     />
                 </div>
                 <div>
