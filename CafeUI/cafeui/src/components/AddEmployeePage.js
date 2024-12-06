@@ -19,8 +19,12 @@ const AddEmployeePage = () => {
         };
     useEffect(() => {
         // Fetch cafes for dropdown
+        try{
         axios.get('http://localhost:5294/api/cafes/cafe/'+ "default").then(response => setCafes(response.data));
-
+        }
+        catch (error) {
+            console.error('Error adding cafe:', error);
+        }
    
     }, []);
 
