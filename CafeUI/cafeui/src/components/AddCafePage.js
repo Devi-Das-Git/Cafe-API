@@ -53,6 +53,7 @@ const random_uuid = uuidv4();
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        minLength={6} maxLength={10}
                     />
                 </div>
                 <div>
@@ -61,6 +62,7 @@ const random_uuid = uuidv4();
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
+                        minLength={6} maxLength={256}
                     ></textarea>
                 </div>
                 <div>
