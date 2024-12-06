@@ -31,7 +31,7 @@ namespace CafeAPI.Apis
             return api;
         }
 
-        private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> CreateEmployeeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
+        private static async Task<Results<Created, BadRequest<string>, ProblemHttpResult>> CreateEmployeeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
             CreateEmployeeCommand command, [AsParameters] CafeServices services)
         {
             try
@@ -46,7 +46,7 @@ namespace CafeAPI.Apis
                 }
                 var commandCreate = new IdentifiedCommand<CreateEmployeeCommand, bool>(command, requestId);
                 var cafeResult = await services.Mediator.Send(commandCreate);
-                return TypedResults.Ok();
+                return TypedResults.Created(command.Id);
             }
             catch (Exception ex) {
                 services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} - {Exception}",
@@ -71,7 +71,7 @@ namespace CafeAPI.Apis
             return TypedResults.Ok();
         }
 
-        private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> RemoveEmployeeAsync([FromHeader(Name = "x-requestid")] string requestId,
+        private static async Task<Results<NoContent, BadRequest<string>, ProblemHttpResult>> RemoveEmployeeAsync([FromHeader(Name = "x-requestid")] string requestId,
              [AsParameters] CafeServices services)
         {
             try
@@ -90,7 +90,7 @@ namespace CafeAPI.Apis
                 var command = new RemoveEmployeeCommand(result);
                 var removeCommand = new IdentifiedCommand<RemoveEmployeeCommand, bool>(command, result);
                 var cafeResult = await services.Mediator.Send(removeCommand);
-                return TypedResults.Ok();
+                return TypedResults.NoContent();
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace CafeAPI.Apis
                 return TypedResults.Problem("An error occurred while Deleting the Employee.");
             }
         }
-        private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> RemoveCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
+        private static async Task<Results<NoContent, BadRequest<string>, ProblemHttpResult>> RemoveCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
              [AsParameters] CafeServices services)
         {
             try
@@ -115,7 +115,7 @@ namespace CafeAPI.Apis
                 var command = new RemoveCafeCommand(requestId);
                 var removeCommand = new IdentifiedCommand<RemoveCafeCommand, bool>(command, requestId);
                 var cafeResult = await services.Mediator.Send(removeCommand);
-                return TypedResults.Ok();
+                return TypedResults.NoContent();
             }
             catch (Exception ex)
             {
@@ -125,7 +125,7 @@ namespace CafeAPI.Apis
             }
         }
 
-        private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> CreateCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
+        private static async Task<Results<Created, BadRequest<string>, ProblemHttpResult>> CreateCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
             CreateCafeCommand command, [AsParameters] CafeServices services)
         {
             try
@@ -139,7 +139,7 @@ namespace CafeAPI.Apis
 
                 var commandCreate = new IdentifiedCommand<CreateCafeCommand, bool>(command, requestId);
                 var cafeResult = await services.Mediator.Send(commandCreate);
-                return TypedResults.Ok();
+                return TypedResults.Created();
             }
             catch (Exception ex)
             {
