@@ -72,13 +72,15 @@ const CafePage = () => {
        }};
        
        
-        return ( <div width="100px"> <button onClick={handleDelete}>Delete</button>   </div> ); 
+        return ( <div width="100px"> <button onClick={handleDelete}>Del</button> 
+        <button onClick={(id) => navigate(`/edit-cafe/${props.data.id}`)}>Edit</button>   
+        </div> ); 
    };
 
     const columns = [
         {
             headerName: "action",
-            minWidth: 150,
+            minWidth: 160,
             cellRenderer: actionCellRenderer,
             editable: false,
             colId: "action"
