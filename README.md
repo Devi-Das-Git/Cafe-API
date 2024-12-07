@@ -27,6 +27,6 @@ Covered items:
 1.	Get Café and Employee.
 2.	Add Café and Employee.
 3.	Delete Café and Employee.
-4.	Edit Flow not covered as it is same like Add 
+4.	Edit Cafe 
 	
 
