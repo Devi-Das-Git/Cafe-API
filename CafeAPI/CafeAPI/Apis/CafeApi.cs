@@ -63,12 +63,25 @@ namespace CafeAPI.Apis
             var cafeResult = await services.Mediator.Send(commandCreate);
             return TypedResults.Ok();
         }
-        private static async Task<Results<Ok, BadRequest<string>, ProblemHttpResult>> UpdateCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
+
+        private static async Task<Results<NoContent, BadRequest<string>, ProblemHttpResult>> UpdateCafeAsync([FromHeader(Name = "x-requestid")] Guid requestId,
             UpdateCafeCommand command, [AsParameters] CafeServices services)
         {
-            var commandCreate = new IdentifiedCommand<UpdateCafeCommand, bool>(command, requestId);
-            var cafeResult = await services.Mediator.Send(commandCreate);
-            return TypedResults.Ok();
+            try
+            {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId}",
+               "UpdateEmployeeCommand", nameof(requestId), requestId);
+                var commandCreate = new IdentifiedCommand<UpdateCafeCommand, bool>(command, requestId);
+                var cafeResult = await services.Mediator.Send(commandCreate);
+                return TypedResults.NoContent();
+            }
+            catch (Exception ex)
+            {
+                services.Logger.LogInformation("Sending command: {CommandName} - {IdProperty}: {CommandId} -{Exception}",
+               "UpdateCafeCommand", nameof(requestId), requestId, ex.Message);
+
+                return TypedResults.Problem("An error occurred while updating the Cafe.");
+            }
         }
 
         private static async Task<Results<NoContent, BadRequest<string>, ProblemHttpResult>> RemoveEmployeeAsync([FromHeader(Name = "x-requestid")] string requestId,
