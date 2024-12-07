@@ -20,7 +20,7 @@ namespace CafeAPI.Application.Queries
                     Id = c.Id,
                     Name = c.Name,
                     Description = c.Description,
-                    Employees = c.Employees,
+                    Employees = context.Employees.Where(x=>x.CafeId==c.Id).Count(),
                     Logo = c.Logo,
                     Location = c.Location
 
@@ -34,7 +34,7 @@ namespace CafeAPI.Application.Queries
                     Id = c.Id,
                     Name = c.Name,
                     Description = c.Description,
-                    Employees = c.Employees,
+                    Employees = context.Employees.Where(x => x.CafeId == c.Id).Count(),
                     Logo = c.Logo,
                     Location = c.Location
 
