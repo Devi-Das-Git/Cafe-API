@@ -82,7 +82,7 @@ const EmployeePage = () => {
         { headerName: 'Phone', field: 'phone' },
         { headerName: 'Gender', field: 'gender' },
         { headerName: 'Days Worked', field: 'daysWorked' },
-        
+        { headerName: 'Cafe Name', field: 'cafe' },
     ];
     
     const defaultColDef = {
