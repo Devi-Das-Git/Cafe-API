@@ -8,19 +8,26 @@ const EditCafePage = () => {
     const [location, setLocation] = useState('');
     const [logo, setLogo] = useState(null);
     const { id } = useParams();
+    const [UserId, setUserId] =useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchCafeDetails();
     }, [id]);
 
-    const fetchCafeDetails = async () => {
+    const handleCancel = () => { navigate('/'); 
+        // Redirect to home or any other page 
+        };
+   const fetchCafeDetails = async () => {
         try {
-            const response = await axios.get(`/cafe/${id}`);
+            const response = await axios.get('http://localhost:5294/api/cafes/cafe/'+ "default"); 
             const cafe = response.data;
-            setName(cafe.name);
-            setDescription(cafe.description);
-            setLocation(cafe.location);
+            const cafeItem = cafe.find(item => item.id === id);
+            setName(cafeItem.name);
+            setDescription(cafeItem.description);
+            setLocation(cafeItem.location);
+            setUserId(cafeItem.id)
+            console.log(name+"-"+UserId);
             // Handle the logo if needed
         } catch (error) {
             console.error('Error fetching cafe details:', error);
@@ -37,17 +44,19 @@ const EditCafePage = () => {
         formData.append('name', name);
         formData.append('description', description);
         formData.append('location', location);
+        formData.append('UserId',UserId)
         if (logo) formData.append('logo', logo);
 
         try {
-            await axios.put(`/cafe/${id}`, formData, {
+            await axios.put('http://localhost:5294/api/cafes/cafe/update', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
+                    'x-requestid':UserId
                 },
             });
             navigate('/');
         } catch (error) {
-            console.error('Error updating cafe:', error);
+            console.error('Error adding cafe:', error);
         }
     };
 
@@ -62,6 +71,7 @@ const EditCafePage = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        minLength={6} maxLength={10}
                     />
                 </div>
                 <div>
@@ -70,6 +80,7 @@ const EditCafePage = () => {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
+                        minLength={6} maxLength={256}
                     ></textarea>
                 </div>
                 <div>
@@ -90,6 +101,7 @@ const EditCafePage = () => {
                     />
                 </div>
                 <button type="submit">Update Café</button>
+                <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );
