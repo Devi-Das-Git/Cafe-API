@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 
 namespace CafeAPI.Application.Commands
 {
@@ -7,7 +7,9 @@ namespace CafeAPI.Application.Commands
     string Name,
     string Email,
     string Phone,
-    string Gender
+    string Gender,
+    Guid CafeId
+
 
     ) : IRequest<bool>;
 }
