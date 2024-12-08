@@ -1,4 +1,4 @@
-﻿using Cafe.Infrastructure;
+using Cafe.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using CafeAPI.Application.Queries;
 using System.Text.Json.Serialization;
@@ -42,8 +42,10 @@ namespace CafeAPI.Extensions
             builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<CreateCafeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<CreateCafeCommand, bool>));
             builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<CreateEmployeeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<CreateEmployeeCommand, bool>));
             builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<UpdateCafeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<UpdateCafeCommand, bool>));
+            builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<UpdateEmployeeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<UpdateEmployeeCommand, bool>));
             builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<RemoveCafeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<RemoveCafeCommand, bool>));
             builder.Services.AddTransient(typeof(IRequestHandler<IdentifiedCommand<RemoveEmployeeCommand, bool>, bool>), typeof(IdentifiedCommandHandler<RemoveEmployeeCommand, bool>));
+
 
             builder.Services.AddScoped<ICafeRepository, CafeRepository>();
 
