@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import axios from 'axios';
-import {  useNavigate } from 'react-router-dom';
+import {  useNavigate,useParams } from 'react-router-dom';
 import './css/EmployeePage.css';
 
 
@@ -12,8 +12,8 @@ const EmployeePage = () => {
     const [employees, setEmployees] = useState([]);
     // const { cafeId } = useParams();
     const navigate = useNavigate();
-    const [cafeId, setLocationFilter] = useState('Cafe Delight');
-
+    const [cafeId, setLocationFilter] = useState('');
+    const { id } = useParams();
     const actionCellRenderer = (props) => { 
         const handleEdit = () => {         
         //     const random_uuid = uuidv4();
@@ -60,13 +60,32 @@ const EmployeePage = () => {
     };
     
     useEffect(() => {
+        
+        //debugger;
+       // alert(id)
+       
+        //setLocationFilter(id)
+        if(id==undefined){
+            setLocationFilter('Cafe Delight')
+            //id='Cafe Delight'
+        }
+        else{
+            
+            setLocationFilter(id)
+        }
         fetchEmployees();
     }, [cafeId]);
 
     const fetchEmployees = async () => {
         try {
-            const response = await axios.get('http://localhost:5294/api/cafes/employee/'+cafeId);
+            if(id!=undefined){
+            const response = await axios.get('http://localhost:5294/api/cafes/employee/'+id);
             setEmployees(response.data);
+            }
+            else{
+                const response = await axios.get('http://localhost:5294/api/cafes/employee/'+cafeId);
+                setEmployees(response.data);
+                }
         } catch (error) {
             console.error('Error fetching employees:', error);
         }
