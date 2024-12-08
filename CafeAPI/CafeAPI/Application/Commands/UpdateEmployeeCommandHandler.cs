@@ -1,4 +1,4 @@
-﻿using Cafe.Domain.Repository;
+using Cafe.Domain.Repository;
 using MediatR;
 
 namespace CafeAPI.Application.Commands
@@ -14,7 +14,7 @@ namespace CafeAPI.Application.Commands
        
         public Task<bool> Handle(UpdateEmployeeCommand message, CancellationToken cancellationToken)
         {
-            Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = message.Id, Email = message.Email, Phone = message.Phone, Name = message.Name };
+            Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = message.Id, Email = message.Email, Phone = message.Phone, Name = message.Name, CafeId=message.CafeId, Gender =message.Gender };
 
             _repository.UpdateEmployee(employee);
             return Task.FromResult(true);
