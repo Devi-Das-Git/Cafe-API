@@ -64,6 +64,7 @@ namespace CafeAPI.Application.Queries
                 Cafe = e.Cafe.Name,
                 Gender = e.Gender,
                 StartDate = e.StartDate,
+                CafeId = e.CafeId
             }).OrderByDescending(e => e.DaysWorked).ToListAsync();
 
             if (employees is null)
