@@ -24,8 +24,12 @@ const EditEmployeePage = () => {
     useEffect(() => {
         
         try{
-            axios.get('http://localhost:5294/api/cafes/cafe/'+ "default").then(response => setCafes(response.data));
-            console.log("cafes" + cafes);
+            axios.get('http://localhost:5294/api/cafes/cafe/'+ "default").then(
+            
+                response => setCafes(response.data)
+            );
+            
+            console.log("cafes--" + cafes);
             }
             catch (error) {
                 console.error('Error adding cafe:', error);
@@ -71,7 +75,6 @@ const EditEmployeePage = () => {
 
     const fetchEmployeeDetails = async () => {
         try {
-            debugger;
             const response = await axios.get('http://localhost:5294/api/cafes/employee/'+updatedId[1]);
             const cafeItem = response.data.find(item => item.id === updatedId[0]);
             //setEmployees(response.data);
@@ -88,6 +91,8 @@ const EditEmployeePage = () => {
            // Combine the components into the desired format (dd-mm-yyyy) 
            const formattedDate = `${day}-${month}-${year}`;
             setStartDate(formattedDate);
+            setCafeId(cafeItem.cafeId)
+            
             
         } catch (error) {
             console.error('Error fetching employees:', error);
@@ -153,7 +158,7 @@ const EditEmployeePage = () => {
                 <label>Assigned Café</label>
                 <select value={cafeId} onChange={(e) => setCafeId(e.target.value)}  required className="form-control">
                     <option value="">Select a café</option>
-                    {cafes.map(cafe => (
+                    {cafes.map(cafe => ( 
                         <option key={cafe.id} value={cafe.id}>{cafe.name}</option>
                     ))}
                 </select>
