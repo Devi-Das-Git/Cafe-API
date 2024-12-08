@@ -19,7 +19,9 @@ const EditEmployeePage = () => {
     const navigate = useNavigate();
     let  cafename  ;
     let updatedId;
-    
+    const handleCancel = () => { navigate('/employees'); 
+        // Redirect to home or any other page 
+        };    
 
     useEffect(() => {
         
@@ -165,10 +167,12 @@ const EditEmployeePage = () => {
                
             </div>
                 <button type="submit">Add Employee</button>
+                <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );
 };
+
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
     .replace(/[xy]/g, function (c) {
