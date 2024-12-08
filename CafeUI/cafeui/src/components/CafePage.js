@@ -88,7 +88,7 @@ const CafePage = () => {
         //{ headerName: 'Logo', field: 'logo', cellRenderer: 'LogoCellRenderer' },
         { headerName: 'Name', field: 'name' },
         { headerName: 'Description', field: 'description' },
-        { headerName: 'Employees', field: 'employees', cellRenderer: 'EmployeesCellRenderer' },
+        { headerName: 'Employees', field: 'employees', cellRenderer: EmployeesCellRenderer },
         { headerName: 'Location', field: 'location' }
         
     ];
@@ -133,7 +133,8 @@ const LogoCellRenderer = (props) => {
 };
 
 const EmployeesCellRenderer = (props) => {
-     //return <button onClick={() => navigate(`/employees/${props.data.id}`)}>{props.value.length}</button>;
+    const navigate = useNavigate();
+     return <button  onClick={() => navigate(`/employees/${props.data.name}`)}>{props.data.employees}</button>;
 };
 
   
