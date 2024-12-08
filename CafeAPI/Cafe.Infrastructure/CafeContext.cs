@@ -38,7 +38,7 @@ namespace Cafe.Infrastructure
                 },
                 new Cafe.Domain.Models.Cafe
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid("7c4015e4-3464-4510-9c44-fe6a2c208067"),
                     Name = "Java Junction",
                     Description = "The perfect spot for coffee lovers",
                     Location = "Uptown",
