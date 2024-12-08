@@ -13,6 +13,7 @@ const EditEmployeePage = () => {
     const [cafeId, setCafeId] = useState('');
     const [id,setId]= useState('');
     const [cafes, setCafes] = useState([]);
+    const [errors, setErrors] = useState({});
     //const { cafeId } = useParams();
     let  Id  ;
     const [UserId, setUserId] =useState([]);
@@ -114,6 +115,7 @@ const EditEmployeePage = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        minLength={6} maxLength={10}
                     />
                 </div>
                 <div>
@@ -123,6 +125,7 @@ const EditEmployeePage = () => {
                         value={email}
                         onChange={(e) => setEmailAddress(e.target.value)}
                         required
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     />
                 </div>
                 <div>
@@ -132,6 +135,7 @@ const EditEmployeePage = () => {
                         value={phone}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
+                        pattern="^[8-9][0-9]{7}$"
                     />
                 </div>
                 <div>
@@ -164,6 +168,7 @@ const EditEmployeePage = () => {
                         <option key={cafe.id} value={cafe.id}>{cafe.name}</option>
                     ))}
                 </select>
+                {/* {errors.cafeId && <div className="text-danger">{errors.cafeId}</div>} */}
                
             </div>
                 <button type="submit">Add Employee</button>
