@@ -27,7 +27,7 @@ Covered items:
 1.	Get Café and Employee.
 2.	Add Café and Employee.
 3.	Delete Café and Employee.
-4.	Edit Cafe
+4.	Edit Cafe and Employee.
 5.	skip adding logo 
 	
 
