@@ -122,7 +122,7 @@ const AddEmployeePage = () => {
                 </div>
                 <div className="form-group">
                 <label>Assigned Café</label>
-                <select value={cafeId} onChange={(e) => setCafeId(e.target.value)} className="form-control">
+                <select value={cafeId} onChange={(e) => setCafeId(e.target.value)} required className="form-control">
                     <option value="">Select a café</option>
                     {cafes.map(cafe => (
                         <option key={cafe.id} value={cafe.id}>{cafe.name}</option>
