@@ -74,6 +74,7 @@ public class CafeRepository
             existingEmployee.Phone = employee.Phone;
             existingEmployee.Email = employee.Email;
             existingEmployee.CafeId = employee.CafeId;
+            existingEmployee.Gender = employee.Gender;
             _context.Update(existingEmployee);
         }
         return _context.SaveChanges();
