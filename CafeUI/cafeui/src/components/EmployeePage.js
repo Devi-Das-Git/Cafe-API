@@ -6,47 +6,6 @@ import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 import './css/EmployeePage.css';
 
-const actionCellRenderer = (props) => { 
-    const handleEdit = () => {         
-    //     const random_uuid = uuidv4();
-        const formData = new FormData();
-        formData.append('userId',props.data.id)
-        formData.append('name', props.data.name);
-        formData.append('description', props.data.description);
-        formData.append('location', props.data.location);
-        
-     
-        try {
-            axios.update('http://localhost:5294/api/cafes/cafe/update', formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-requestid':props.data.id
-                },
-            });
-            
-        } catch (error) {
-            console.error('Error adding cafe:', error);
-        }
-    };
-
-     const handleDelete = () => { 
-        console.log(props.data)  
-        try {
-        axios.delete(`http://localhost:5294/api/cafes/employee/`+props.data.id, {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-requestid':props.data.id
-            },
-        });
-        window.location.reload()
-    }  catch (error) {
-        console.error('Error deleting cafe:', error);
-        window.location.reload()
-    }};
-    
-    
-     return ( <div width="100px"> <button onClick={handleDelete}>Delete</button>   </div> ); 
-};
 
 
 const EmployeePage = () => {
@@ -54,6 +13,52 @@ const EmployeePage = () => {
     // const { cafeId } = useParams();
     const navigate = useNavigate();
     const [cafeId, setLocationFilter] = useState('Cafe Delight');
+
+    const actionCellRenderer = (props) => { 
+        const handleEdit = () => {         
+        //     const random_uuid = uuidv4();
+            const formData = new FormData();
+            formData.append('userId',props.data.id)
+            formData.append('name', props.data.name);
+            formData.append('description', props.data.description);
+            formData.append('location', props.data.location);
+            
+         
+            try {
+                axios.update('http://localhost:5294/api/cafes/cafe/update', formData, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-requestid':props.data.id
+                    },
+                });
+                
+            } catch (error) {
+                console.error('Error adding cafe:', error);
+            }
+        };
+    
+         const handleDelete = () => { 
+            console.log(props.data)  
+            try {
+            axios.delete(`http://localhost:5294/api/cafes/employee/`+props.data.id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-requestid':props.data.id
+                },
+            });
+            window.location.reload()
+        }  catch (error) {
+            console.error('Error deleting cafe:', error);
+            window.location.reload()
+        }};
+        
+        
+         return ( <div> 
+            <button onClick={handleDelete}>Del</button> 
+             <button onClick={(id,location) => navigate(`/edit-employee/${props.data.id + '_'+cafeId}`)}>Edit</button>  
+               </div> ); 
+    };
+    
     useEffect(() => {
         fetchEmployees();
     }, [cafeId]);
