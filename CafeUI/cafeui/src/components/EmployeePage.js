@@ -13,7 +13,7 @@ const EmployeePage = () => {
     // const { cafeId } = useParams();
     const navigate = useNavigate();
     const [cafeId, setLocationFilter] = useState('');
-    const { id } = useParams();
+    let { id } = useParams();
     const actionCellRenderer = (props) => { 
         const handleEdit = () => {         
         //     const random_uuid = uuidv4();
@@ -60,23 +60,21 @@ const EmployeePage = () => {
     };
     
     useEffect(() => {
-        
-        //debugger;
-       // alert(id)
-       
-        //setLocationFilter(id)
-        if(id==undefined){
+        if(id==undefined && cafeId ==''){
             setLocationFilter('Cafe Delight')
-            //id='Cafe Delight'
+        }
+        else if(id !='' && cafeId==''){
+            setLocationFilter(id)
         }
         else{
-            
-            setLocationFilter(id)
+            setLocationFilter(cafeId)
+            id = cafeId
         }
         fetchEmployees();
     }, [cafeId]);
 
     const fetchEmployees = async () => {
+        debugger
         try {
             if(id!=undefined){
             const response = await axios.get('http://localhost:5294/api/cafes/employee/'+id);
@@ -143,13 +141,5 @@ const DateRenderer = (props) => {
     return new Date(props.value).toLocaleDateString();
 };
 
-// const ActionCellRenderer = (props) => {
-//     return (
-//         <>
-//             <button onClick={() => props.onEdit(props.data.id)}>Edit</button>
-//             <button onClick={() => props.onDelete(props.data.id)}>Delete</button>
-//         </>
-//     );
-// };
 
 export default EmployeePage;
