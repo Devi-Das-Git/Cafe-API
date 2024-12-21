@@ -19,15 +19,50 @@ namespace CafeAPI.Apis
         {
             var api = app.MapGroup("api/cafes/");
 
-            api.MapGet("/cafe/{location}", GetLocationAsync);
-            api.MapGet("/employee/{cafe}", GetEmloyeesByCafeAsync);
-            api.MapPost("/cafe/create", CreateCafeAsync);
-            api.MapPost("/employee/create", CreateEmployeeAsync);
+            api.MapGet("/cafe/{location}", GetLocationAsync)
+            .WithName("Cafe List By Location")
+            .WithSummary("List Cafe items by location")
+            .WithDescription("Get a list of items.")
+            .WithTags("cafe"); 
 
-            api.MapPut("/cafe/update", UpdateCafeAsync);
-            api.MapPut("/employee/update", UpdateEmployeeAsync);
-            api.MapDelete("/cafe/{Id:guid}", RemoveCafeAsync);
-            api.MapDelete("/employee/{Id}", RemoveEmployeeAsync);
+            api.MapGet("/employee/{cafe}", GetEmloyeesByCafeAsync)
+            .WithName("EmployeeListByCafew")
+            .WithSummary("List Employee items by Cafe")
+            .WithDescription("Get a list of employee by Cafe.")
+            .WithTags("employee");
+            
+            api.MapPost("/cafe/create", CreateCafeAsync)
+            .WithName("Create Cafe")
+            .WithSummary("Create a Cafe")
+            .WithDescription("Create a Cafe")
+            .WithTags("cafe");
+            
+            api.MapPost("/employee/create", CreateEmployeeAsync)
+            .WithName("Create an Employee")
+            .WithSummary("Create an Employee")
+            .WithDescription("Create an Employee")
+            .WithTags("employee");
+
+            api.MapPut("/cafe/update", UpdateCafeAsync)
+            .WithName("Update Cafe")
+            .WithSummary("Update Cafe")
+            .WithDescription("Update Cafe")
+            .WithTags("cafe");
+            api.MapPut("/employee/update", UpdateEmployeeAsync)
+            .WithName("Update an Employee")
+            .WithSummary("Update an Employee")
+            .WithDescription("Update an Employee")
+            .WithTags("employee");
+            api.MapDelete("/cafe/{Id:guid}", RemoveCafeAsync)
+            .WithName("Remove Cafe")
+            .WithSummary("Remove a Cafe")
+            .WithDescription("Remove a Cafe")
+            .WithTags("cafe"); 
+            api.MapDelete("/employee/{Id}", RemoveEmployeeAsync)
+            .WithName("Remove Employee")
+            .WithSummary("Remove an Employee")
+            .WithDescription("Remove an Employee")
+            .WithTags("employee"); ;
             return api;
         }
 
