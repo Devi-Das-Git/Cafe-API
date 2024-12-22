@@ -10,7 +10,7 @@ Covered items :
 1. Minimal API.
 2. Clean Architecture.
 3. CQRS Pattern & Mediatr, Repository.
-4. Logging to Console. Asynchronous Programming.
+4. Logging to Console. Exception handling using ProblemResults. Asynchronous Programming.
 5. In Memory Operation with Entity Framework Code First.
 6. Records are used for DTO. 
 7. Scalar UI (all the endpoints are visible)
