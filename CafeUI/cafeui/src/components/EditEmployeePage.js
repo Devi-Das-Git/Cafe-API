@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './css/EditEmployee.css';
-
+import { format, parse } from 'date-fns';
 
 const EditEmployeePage = () => {
     const [name, setName] = useState('');
@@ -87,13 +87,13 @@ const EditEmployeePage = () => {
             setGender(cafeItem.gender);
             setId(cafeItem.id);
             const date = new Date(cafeItem.startDate);
+            
             const day = String(date.getUTCDate()).padStart(2, '0'); 
-           const month = String(date.getUTCMonth() + 1).padStart(2, '0'); 
-           // Months are 0-based 
-           const year = date.getUTCFullYear(); 
-           // Combine the components into the desired format (dd-mm-yyyy) 
-           const formattedDate = `${day}-${month}-${year}`;
-            setStartDate(formattedDate);
+            const month = String(date.getUTCMonth() + 1).padStart(2, '0'); 
+            const year = date.getUTCFullYear(); 
+            const formattedDate = `${day}-${month}-${year}`;
+            const parsedDate = format(parse(formattedDate, 'dd-MM-yyyy', new Date()),'yyyy-MM-dd');
+            setStartDate(parsedDate);
             setCafeId(cafeItem.cafeId)
             
             
