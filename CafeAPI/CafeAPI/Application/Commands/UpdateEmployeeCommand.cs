@@ -8,7 +8,8 @@ namespace CafeAPI.Application.Commands
     string Email,
     string Phone,
     string Gender,
-    Guid CafeId
+    Guid CafeId,
+    DateTime StartDate
 
 
     ) : IRequest<bool>;
