@@ -14,7 +14,7 @@ namespace CafeAPI.Application.Commands
        
         public Task<bool> Handle(UpdateEmployeeCommand message, CancellationToken cancellationToken)
         {
-            Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = message.Id, Email = message.Email, Phone = message.Phone, Name = message.Name, CafeId=message.CafeId, Gender =message.Gender };
+            Cafe.Domain.Models.Employee employee = new Cafe.Domain.Models.Employee() { Id = message.Id, Email = message.Email, Phone = message.Phone, Name = message.Name, CafeId=message.CafeId, Gender =message.Gender, StartDate=message.StartDate };
 
             _repository.UpdateEmployee(employee);
             return Task.FromResult(true);
